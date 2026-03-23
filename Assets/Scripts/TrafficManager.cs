@@ -11,11 +11,10 @@ public class TrafficManager : MonoBehaviour
     public float maxSpawnTime = 60f;
     private float dynamicTimer = 2f;
 
-    private float[] laneCooldown; // Cooldown timer per lane
-
+    private float[] laneCooldown;
     void Start()
     {
-        laneCooldown = new float[lane.Length]; // Initialize cooldowns
+        laneCooldown = new float[lane.Length]; 
         StartCoroutine(TrafficSpawner());
     }
 
@@ -40,7 +39,6 @@ public class TrafficManager : MonoBehaviour
 
     void SpawnTrafficVehicle()
     {
-        // Get all lanes that are NOT on cooldown
         List<int> availableLanes = new List<int>();
 
         for (int i = 0; i < lane.Length; i++)
@@ -49,15 +47,13 @@ public class TrafficManager : MonoBehaviour
                 availableLanes.Add(i);
         }
 
-        // At least 1 lane must be free for player to pass
         if (availableLanes.Count <= 1) return;
 
-        // Pick random lane from available lanes
         int randomLaneIndex = availableLanes[Random.Range(0, availableLanes.Count)];
         int randomVehicleIndex = Random.Range(0, trafficVehicle.Length);
 
         Instantiate(trafficVehicle[randomVehicleIndex], lane[randomLaneIndex].position, Quaternion.identity);
 
-        laneCooldown[randomLaneIndex] = Time.time + 3f; // 3 sec cooldown for this lane
+        laneCooldown[randomLaneIndex] = Time.time + 3f; 
     }
 }
