@@ -56,9 +56,9 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
-        // Change engine pitch based on speed
-        float speed = CarSpeed(); // km/h
-        float pitch = Mathf.Lerp(0.5f, 2.0f, speed / 120f); // 0 km/h = low pitch, 120 km/h = high pitch
+
+        float speed = CarSpeed(); 
+        float pitch = Mathf.Lerp(0.5f, 2.0f, speed / 120f); 
         engineSound.pitch = pitch;
     }
 
@@ -123,33 +123,7 @@ public class CarController : MonoBehaviour
     {
         isMoveLeftPressed = false;
     }
-    //void ApplyBrakes()
-    //{
-    //    if (isBrakePressed && CarSpeed() > 5f)
-    //    {
-    //        BLSkidMark.emitting = true;
-    //        BRSkidMark.emitting = true;
 
-    //        AudioManager.Instance.PlaySFX(brakeSound);
-
-    //        BLWheelCollider.brakeTorque = brakeForce;
-    //        BRWheelCollider.brakeTorque = brakeForce;
-    //        FLWheelCollider.brakeTorque = brakeForce;
-    //        FRWheelCollider.brakeTorque = brakeForce;
-    //        carRigidbody.linearDamping = 1f;
-    //    }
-    //    else
-    //    {
-    //        BLSkidMark.emitting = false;
-    //        BRSkidMark.emitting = false;
-
-    //        BLWheelCollider.brakeTorque = 0f;
-    //        BRWheelCollider.brakeTorque = 0f;
-    //        FLWheelCollider.brakeTorque = 0f;
-    //        FRWheelCollider.brakeTorque = 0f;
-    //        carRigidbody.linearDamping = 0f;
-    //    }
-    //}
 
     void ApplyBrakes()
     {
@@ -160,7 +134,6 @@ public class CarController : MonoBehaviour
             BLSkidMark.emitting = true;
             BRSkidMark.emitting = true;
 
-            // Start brake sound if not already playing
             if (!brakeSound.isPlaying)
             {
                 brakeSound.loop = true;
