@@ -19,14 +19,12 @@ public class CarLights : MonoBehaviour
     {
         carController = GetComponent<CarController>();
 
-        // Turn on lights only if Night Scene
         bool isNight = SceneManager.GetActiveScene().name == "Night Scene";
         frontRightLight.SetActive(isNight);
         frontLeftLight.SetActive(isNight);
         backRightLight.SetActive(isNight);
         backLeftLight.SetActive(isNight);
 
-        // Brake lights always start off
         brakeRightLight.SetActive(false);
         brakeRightLight.SetActive(false);
     }
